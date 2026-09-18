@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free-dam, e/arth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Karla:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+
+  /* ---------- Tokens: light (manuscript) default ---------- */
+  :root {
+    --bg: #f3ede0;
+    --bg-alt: #eae1cc;
+    --text: #241f2e;
+    --text-soft: #58516c;
+    --line: rgba(36,31,46,0.16);
+    --gold: #a17518;
+    --dharmic: #b5651d;
+    --abrahamic: #2d4a73;
+    --eastasian: #2c6b4b;
+    --hellenic: #8a4a2d;
+    --heart: #a13c58;
+    --witness: #5b4b8a;
+    --thanks: #8a6a1f;
+    --sound: #1f6b6b;
+    --beyond: #3d4a5c;
+    --card-bg: rgba(255,255,255,0.35);
+    --serif: 'Cormorant Garamond', 'Georgia', serif;
+    --sans: 'Karla', -apple-system, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #14111f;
+      --bg-alt: #1b1729;
+      --text: #ece6da;
+      --text-soft: #b6adc6;
+      --line: rgba(236,230,218,0.14);
+      --gold: #d4af37;
+      --dharmic: #e0954f;
+      --abrahamic: #7fa0d4;
+      --eastasian: #74c19a;
+      --hellenic: #cf8b63;
+      --heart: #e28ba0;
+      --witness: #b3a0e0;
+      --thanks: #e0b563;
+      --sound: #5fc2c2;
+      --beyond: #9fb3c8;
+      --card-bg: rgba(255,255,255,0.035);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #14111f;
+    --bg-alt: #1b1729;
+    --text: #ece6da;
+    --text-soft: #b6adc6;
+    --line: rgba(236,230,218,0.14);
+    --gold: #d4af37;
+    --dharmic: #e0954f;
+    --abrahamic: #7fa0d4;
+    --eastasian: #74c19a;
+    --hellenic: #cf8b63;
+    --heart: #e28ba0;
+    --witness: #b3a0e0;
+    --thanks: #e0b563;
+    --sound: #5fc2c2;
+    --beyond: #9fb3c8;
+    --card-bg: rgba(255,255,255,0.035);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection { background: var(--gold); color: var(--bg); }
+
+  a { color: inherit; }
+
+  .wrap {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    position: relative;
+    padding: 108px 28px 96px;
+    text-align: center;
+    overflow: hidden;
+  }
+
+  .hero svg.rays {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 900px; max-width: 220vw;
+    opacity: 0.35;
+    pointer-events: none;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text-soft);
+    margin: 0 0 18px;
+    position: relative;
+  }
+
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+    line-height: 1.08;
+    margin: 0 0 26px;
+    position: relative;
+    letter-spacing: 0.005em;
+  }
+
+  .hero p.lede {
+    font-size: 1.08rem;
+    color: var(--text-soft);
+    max-width: 580px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  /* ---------- Opening mantra ---------- */
+  .mantra {
+    padding: 6px 0 90px;
+    text-align: center;
+  }
+  .mantra-kicker {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: 1.02rem;
+    margin: 0 0 14px;
+  }
+  .mantra-title {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin: 0 0 18px;
+  }
+  .mantra-lede {
+    color: var(--text-soft);
+    max-width: 560px;
+    margin: 0 auto 52px;
+    font-size: 1.02rem;
+  }
+  .mantra-words {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    text-align: left;
+    margin-bottom: 54px;
+  }
+  @media (max-width: 760px) {
+    .mantra-words { grid-template-columns: 1fr; }
+  }
+  .mantra-word {
+    border-top: 2px solid var(--gold);
+    padding-top: 18px;
+  }
+  .mw-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1.4rem;
+    margin-right: 10px;
+  }
+  .mw-script {
+    font-family: var(--serif);
+    color: var(--text-soft);
+    font-size: 1.05rem;
+  }
+  .mw-literal {
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: 0.88rem;
+    margin: 6px 0 12px;
+  }
+  .mw-essence {
+    font-size: 0.94rem;
+    margin: 0 0 10px;
+  }
+  .mw-vibe {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--gold);
+    font-size: 0.95rem;
+    margin: 0;
+  }
+  .mantra-turn, .mantra-invite {
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1rem;
+    color: var(--text-soft);
+  }
+  .mantra-turn { margin-bottom: 30px; }
+  .mantra-turn em, .mantra-invite em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--text);
+  }
+  .mantra-invite {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.18rem;
+    color: var(--text);
+    margin-top: 6px;
+  }
+  .mantra-close-divider {
+    width: 300px;
+    max-width: 60%;
+    height: 20px;
+    margin: 46px auto 0;
+  }
+
+  /* ---------- Spine ---------- */
+  .spine {
+    position: relative;
+  }
+  .spine::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, var(--line) 6%, var(--line) 94%, transparent);
+    transform: translateX(-50%);
+  }
+  @media (max-width: 760px) {
+    .spine::before { display: none; }
+  }
+
+  /* ---------- Family section ---------- */
+  .family {
+    padding: 70px 0 20px;
+    position: relative;
+  }
+
+  .family-head {
+    text-align: center;
+    margin-bottom: 46px;
+    position: relative;
+  }
+
+  .family-divider {
+    width: 100%;
+    height: 34px;
+    margin-bottom: 22px;
+  }
+
+  .family-name {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+    margin: 0 0 8px;
+  }
+
+  .family-note {
+    color: var(--text-soft);
+    font-size: 0.98rem;
+    max-width: 480px;
+    margin: 0 auto;
+  }
+
+  .terms {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .term {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 30px 32px;
+    position: relative;
+  }
+
+  .term-top {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .term-name {
+    font-family: var(--serif);
+    font-size: 1.65rem;
+    font-weight: 600;
+  }
+
+  .term-script {
+    font-size: 1.15rem;
+    color: var(--text-soft);
+    font-family: var(--serif);
+  }
+
+  .term-literal {
+    font-style: italic;
+    color: var(--text-soft);
+    font-size: 0.94rem;
+    margin: 2px 0 16px;
+  }
+
+  .term-essence {
+    font-size: 1rem;
+    margin: 0 0 18px;
+  }
+
+  .term-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  @media (max-width: 520px) {
+    .term-meta { grid-template-columns: 1fr; }
+  }
+
+  .term-meta div span.label {
+    display: block;
+    font-size: 0.76rem;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+
+  .term-meta div span.value {
+    font-size: 0.94rem;
+  }
+
+  .vibration {
+    font-family: var(--serif);
+    font-style: italic;
+  }
+
+  /* accent bar per family */
+  .term { border-left: 3px solid var(--fam-color, var(--gold)); }
+  .family[data-fam="dharmic"] .term { --fam-color: var(--dharmic); }
+  .family[data-fam="abrahamic"] .term { --fam-color: var(--abrahamic); }
+  .family[data-fam="eastasian"] .term { --fam-color: var(--eastasian); }
+  .family[data-fam="hellenic"] .term { --fam-color: var(--hellenic); }
+
+  .family[data-fam="dharmic"] .family-name { color: var(--dharmic); }
+  .family[data-fam="abrahamic"] .family-name { color: var(--abrahamic); }
+  .family[data-fam="eastasian"] .family-name { color: var(--eastasian); }
+  .family[data-fam="hellenic"] .family-name { color: var(--hellenic); }
+  .family[data-fam="immeasurables"] .term { --fam-color: var(--heart); }
+  .family[data-fam="witness"] .term { --fam-color: var(--witness); }
+  .family[data-fam="thanks"] .term { --fam-color: var(--thanks); }
+  .family[data-fam="immeasurables"] .family-name { color: var(--heart); }
+  .family[data-fam="witness"] .family-name { color: var(--witness); }
+  .family[data-fam="thanks"] .family-name { color: var(--thanks); }
+  .family[data-fam="word"] .term { --fam-color: var(--sound); }
+  .family[data-fam="word"] .family-name { color: var(--sound); }
+  .family[data-fam="beyond"] .term { --fam-color: var(--beyond); }
+  .family[data-fam="beyond"] .family-name { color: var(--beyond); }
+
+  .reflection {
+    padding: 80px 0;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  .reflection .mantra-kicker { text-align: center; }
+  .reflection h2.mantra-title { text-align: center; }
+  .reflection p.body-text {
+    font-size: 1.02rem;
+    color: var(--text-soft);
+    margin: 0 0 20px;
+  }
+  .reflection p.body-text:last-of-type { margin-bottom: 0; }
+  .reflection em {
+    font-family: var(--serif);
+    font-style: italic;
+    color: var(--text);
+  }
+
+  /* ---------- Contribute form ---------- */
+  .contribute {
+    padding: 30px 0 100px;
+  }
+  .contribute-box {
+    background: var(--card-bg);
+    border: 1px solid var(--line);
+    border-radius: 3px;
+    padding: 36px;
+  }
+  .contribute-note {
+    color: var(--text-soft);
+    font-size: 0.92rem;
+    max-width: 560px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+  .contribute-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-bottom: 18px;
+  }
+  @media (max-width: 600px) {
+    .contribute-grid { grid-template-columns: 1fr; }
+  }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .field.full { grid-column: 1 / -1; }
+  .field label {
+    font-size: 0.82rem;
+    color: var(--text-soft);
+  }
+  .field input, .field textarea {
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 10px 12px;
+    resize: vertical;
+  }
+  .field textarea { min-height: 76px; }
+  .field input:focus, .field textarea:focus {
+    outline: 2px solid var(--gold);
+    outline-offset: 1px;
+  }
+  .contribute-actions {
+    display: flex;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 22px;
+  }
+  .btn {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    color: var(--bg);
+    background: var(--gold);
+    border: none;
+    border-radius: 2px;
+    padding: 12px 22px;
+    cursor: pointer;
+  }
+  .btn.secondary {
+    color: var(--text);
+    background: transparent;
+    border: 1px solid var(--line);
+  }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+  .contribute-output {
+    margin-top: 26px;
+  }
+  .contribute-output textarea {
+    width: 100%;
+    min-height: 160px;
+    font-family: ui-monospace, 'SF Mono', Consolas, monospace;
+    font-size: 0.84rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 14px;
+  }
+  .contribute-status {
+    font-size: 0.86rem;
+    color: var(--text-soft);
+    margin-top: 10px;
+    min-height: 1.2em;
+  }
+
+  /* ---------- Community words (live, editable) ---------- */
+  .community-term { position: relative; }
+  .term-actions {
+    margin-top: 14px;
+    text-align: right;
+  }
+  .term-edit-btn {
+    background: none;
+    border: none;
+    color: var(--text-soft);
+    font-family: var(--sans);
+    font-size: 0.8rem;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+  }
+  .term-edit-btn:hover { color: var(--text); }
+  .edit-form .field { margin-bottom: 12px; }
+  .edit-form .field label {
+    display: block;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin-bottom: 4px;
+  }
+  .edit-form input, .edit-form textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 0.92rem;
+    color: var(--text);
+    background: var(--bg);
+    border: 1px solid var(--line);
+    border-radius: 2px;
+    padding: 8px 10px;
+  }
+  .edit-form textarea { min-height: 70px; resize: vertical; }
+  .edit-form-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .community-empty {
+    text-align: center;
+    color: var(--text-soft);
+    font-style: italic;
+    font-family: var(--serif);
+    padding: 10px 0 20px;
+  }
+
+  .section-intro {
+    text-align: center;
+    padding: 90px 0 10px;
+    position: relative;
+  }
+  .section-intro .kicker {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: var(--gold);
+    margin: 0 0 12px;
+  }
+  .section-intro p {
+    max-width: 540px;
+    margin: 0 auto;
+    color: var(--text-soft);
+    font-size: 1rem;
+  }
+
+  /* ---------- Comparison table ---------- */
+  .compare {
+    padding: 80px 0 100px;
+  }
+  .compare h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 3.6vw, 2.3rem);
+    text-align: center;
+    margin: 0 0 40px;
+  }
+  .table-scroll {
+    overflow-x: auto;
+    border: 1px solid var(--line);
+    border-radius: 3px;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 640px;
+    font-size: 0.92rem;
+  }
+  thead th {
+    text-align: left;
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--line);
+    background: var(--bg-alt);
+  }
+  tbody td {
+    padding: 15px 18px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    color: var(--text-soft);
+  }
+  tbody td:first-child {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.05rem;
+    color: var(--text);
+  }
+  tbody tr:last-child td { border-bottom: none; }
+
+  /* ---------- Closing ---------- */
+  .closing {
+    padding: 40px 0 120px;
+    text-align: center;
+  }
+  .closing p {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.3rem;
+    max-width: 560px;
+    margin: 0 auto;
+    color: var(--text-soft);
+  }
+
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    * { scroll-behavior: auto !important; }
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--gold);
+    outline-offset: 3px;
+  }
+
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <svg class="rays" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <g stroke="var(--gold)" stroke-width="0.5" fill="none" opacity="0.5">
+      <circle cx="200" cy="200" r="60"/>
+      <circle cx="200" cy="200" r="110"/>
+      <circle cx="200" cy="200" r="160"/>
+    </g>
+  </svg>
+  <p class="hero-eyebrow">a comparative reading</p>
+  <h1>Free-dam<br>e/arth</h1>
+  <p class="lede">Every tradition that has looked closely at suffering has also named its end. The words below are not synonyms — each carries its own texture, its own cosmology, its own sense of what is being freed, and from what.</p>
+</header>
+
+<section class="mantra wrap">
+  <p class="mantra-kicker">an opening, before the names</p>
+  <h2 class="mantra-title">Three Words That Move First</h2>
+  <p class="mantra-lede">Before the names for freedom's many peaks, three ordinary Sanskrit words are already moving through anybody with a body — quietly at work under feeling, order, and rest, long before any philosophy names them.</p>
+
+  <div class="mantra-words">
+    <div class="mantra-word">
+      <span class="mw-name">Samvedna</span><span class="mw-script">संवेदना</span>
+      <p class="mw-literal">sam (together) + vedanā (felt knowing)</p>
+      <p class="mw-essence">The body's most basic intelligence — what registers before thought has a chance to name it. It is also Hindi's word for empathy: a feeling that only becomes fully real once it is felt <em>with</em> another, not alone.</p>
+      <p class="mw-vibe">the skin knowing before the mind agrees</p>
+    </div>
+    <div class="mantra-word">
+      <span class="mw-name">Samvidhan</span><span class="mw-script">संविधान</span>
+      <p class="mw-literal">sam (together) + vidhāna (arranging, ordaining)</p>
+      <p class="mw-essence">An architecture — the order that lets many separate parts move as one body, one nation, one breath. Long before it named a legal constitution, it named any structure holding multiplicity together without flattening it into sameness.</p>
+      <p class="mw-vibe">many rivers agreeing to one riverbed</p>
+    </div>
+    <div class="mantra-word">
+      <span class="mw-name">Samadhan</span><span class="mw-script">समाधान</span>
+      <p class="mw-literal">sam + ā-dhāna ("placing together, settling") — the same root that gives samādhi</p>
+      <p class="mw-essence">Resolution — the moment a question stops circling and finally rests. Not the suppression of a problem, but its settling, the way silt settles once a river slows down enough to let it.</p>
+      <p class="mw-vibe">a held breath, finally choosing to release</p>
+    </div>
+  </div>
+
+  <p class="mantra-turn">Say <em>samadhan</em> slowly enough and another word seems to hide inside it: <em>sama-dhan</em> — <em>sama</em>, "equal, shared, even," and <em>dhan</em>, "wealth." This is less the word's actual history than its shadow — but the shadow is worth sitting with. If resolution really is a kind of wealth, it may be the rare kind that grows by being shared rather than hoarded: a settled mind doesn't get smaller by helping settle someone else's. Perhaps that is the real, collective wealth every word on this page is quietly circling — not a possession to be defended, but a state any being with a body can enter, and lose nothing by sharing.</p>
+
+  <p class="mantra-invite">What follows, then, is not a doctrine for one kind of body. It is an open exploration — offered to any being who has ever had a body to feel with, a mind to settle, and a self to eventually see through.</p>
+
+  <svg class="mantra-close-divider" viewBox="0 0 300 20" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <path d="M10,10 L130,10 M150,4 L150,16 M170,10 L290,10" stroke="var(--gold)" stroke-width="1" opacity="0.45"/>
+  </svg>
+</section>
+
+<section class="reflection wrap">
+  <p class="mantra-kicker">a note on repetition</p>
+  <h2 class="mantra-title">Why These Words Were Repeated At All</h2>
+  <p class="body-text">None of the words on this page were meant to be read once. In almost every tradition that produced them, they were meant to be repeated — chanted at dawn, whispered on a mala, sung at a threshold, said again at the deathbed. That repetition wasn't decoration. It was the actual mechanism.</p>
+  <p class="body-text">A nervous system doesn't only store what a word means; it learns where a word sends its attention. Say a word enough times, in enough different states, and it stops being information you receive and becomes a direction your energy defaults toward — the way a path across a field gets worn in, not by one determined walk, but by many ordinary ones.</p>
+  <p class="body-text">There's a small, half-serious resonance worth noticing in three unrelated English words: <em>plant</em>, <em>planet</em>, and <em>plan</em>. A plant survives by continually reorienting toward its source of energy. A planet holds together by returning, again and again, to the same path around what feeds it light. A plan is nothing more than a mind doing the same thing on purpose — deciding in advance what it will keep bringing its attention back to. However these three words actually evolved, they describe the same underlying act: staying in relationship with what nurtures you, on purpose, repeatedly, rather than by accident.</p>
+  <p class="body-text">Seen this way, the mantras, prayers, and repeated phrases of older cultures weren't superstition. They were an early, working technology for allocating attention — a way of planting a mind's energy somewhere it could be nurtured, instead of leaving it to drift toward whatever happened to be loudest that day.</p>
+</section>
+
+<section class="reflection wrap">
+  <p class="mantra-kicker">on processing, and what happens when it fails</p>
+  <h2 class="mantra-title">Saṃskāra, Saṃskṛti, Saṃsāra — and a Language Named "Well-Made"</h2>
+  <p class="body-text">Three more words share one honest, traceable root: <em>sam</em> — together, thoroughly — plus <em>kṛ</em>, to do or make. From that single root comes <em>saṃskāra</em> (संस्कार) — the impression a lived experience leaves behind, the groove a repeated thought, wound, or ritual carves into a mind. From the same root comes <em>saṃskṛti</em> (संस्कृति) — culture, the shared residue of countless saṃskāras, processed and passed down until they harden into a way of life. Even the language itself takes its name from this root: <em>saṃskṛta</em> (संस्कृत) — "Sanskrit" — literally "well-made, thoroughly refined." It isn't named for a god or a place. It's named for having been deliberately put together well, the way its grammar was built as one of the most internally consistent systems ever constructed for a spoken language — which may be the simplest possible answer to how such an old language stays so exact.</p>
+  <p class="body-text">A fourth word sits right beside these in sound, though not, strictly, in root: <em>saṃsāra</em> (संसार) — usually traced to <em>sam</em> plus <em>sṛ</em>, "to flow" or "wander," not <em>kṛ</em>. It names the wandering cycle of worldly existence — the wheel that traditions like Buddhism and Hinduism describe liberation as an exit from. Linguists keep saṃsāra and saṃskāra in separate families, and it's worth being honest about that rather than claiming a shared history they don't have. But the resonance is still worth taking seriously, because it points at something true even if it isn't the word's literal etymology: a life's saṃskāras — its accumulated conditioning, the grooves left by everything it was never given room to process — are exactly what keep a person, and by extension a culture, circling the same pattern rather than settling it. Read that way, saṃsāra isn't a separate fate handed down from outside. It's what unprocessed saṃskāras look like once they've piled up.</p>
+  <p class="body-text">Which gives the underlying claim real teeth: when a person's saṃskāras go unprocessed — when a culture's saṃskṛti stops actually refining anyone and starts merely repeating itself — what's left over isn't neutral. It shows up as exactly the kind of missing-the-simple-thing that's easy to recognise and hard to name: reacting instead of responding, inheriting a wound instead of healing it, calling exhaustion normal because everyone around you is exhausted too. Multiply that across enough unprocessed lives and unrefined cultures, and saṃsāra stops being a metaphysical wheel located somewhere else. It starts looking like a fairly accurate description of an ordinary day on earth.</p>
+  <p class="body-text">Restated once more, then, as plainly as the language's own name suggests it should be said: saṃskāras processed well build a saṃskṛti that actually refines the people living inside it; saṃskāras left to pile up build a saṃsāra that just repeats them. Which of those two outcomes a day produces is decided by the same ordinary, repeated attention every word on this page has been circling from the start.</p>
+</section>
+
+<section class="reflection wrap">
+  <p class="mantra-kicker">beyond the syllable, toward what needs no instruction</p>
+  <h2 class="mantra-title">Akṣarātīta — What Doesn't Need to Be Taught</h2>
+  <p class="body-text">Sanskrit was, for a long time, the mumukṣu's language — meant for those whose only real hunger was mukti, a way past this world rather than a better way to trade or argue within it. But that was never the same as saying liberation itself rents out to one grammar. A Tamil Āḻvār, a Marathi Vārkarī, a Punjabi Sikh, a Sindhi Sufi — each arrived at the same wordless place through a completely different mouth. The language was a boat, never the shore. What actually carried each of them across was never the letters themselves — it was what those letters, said with full attention, set vibrating underneath them.</p>
+  <p class="body-text">That underneath layer has its own name: <em>akṣara</em> (अक्षर) — "the imperishable," a syllable understood not as ink but as an unchanging sound-seed. The Bhagavad Gītā goes one step further, describing two kinds of being in this world — the perishable (<em>kṣara</em>), which is everything that changes, and the imperishable (<em>akṣara</em>), the still witness beneath the change — and then naming a third, higher than both:</p>
+  <p class="body-text" style="text-align:center; font-family:var(--serif); font-style:italic; font-size:1.05rem;">यस्मात्क्षरमतीतोऽहमक्षरादपि चोत्तमः ।<br>अतोऽस्मि लोके वेदे च प्रथितः पुरुषोत्तमः ॥ — Bhagavad Gītā 15.18</p>
+  <p class="body-text">Rendered plainly: <em>because I stand beyond the perishable, and higher even than the imperishable, I am known — in the world, and in scripture — as the Supreme Person.</em> That third state, <em>akṣarātīta</em>, "beyond even the imperishable," isn't a fourth letter in a longer alphabet. It's the recognition that even the subtlest sound-seed is still something a message has to pass through — and that there is a state prior to needing anything to pass through at all.</p>
+  <p class="body-text">The Gītā names this same movement from the other direction too, in its account of <em>avyakta</em> (अव्यक्त, the unmanifest) appearing as <em>vyakta</em> (व्यक्त, the manifest):</p>
+  <p class="body-text" style="text-align:center; font-family:var(--serif); font-style:italic; font-size:1.05rem;">अव्यक्तं व्यक्तिमापन्नं मन्यन्ते मामबुद्धयः ।<br>परं भावमजानन्तो ममाव्ययमनुत्तमम् ॥ — Bhagavad Gītā 7.24</p>
+  <p class="body-text">Rendered plainly: <em>the undiscerning take the unmanifest to have simply become manifest, not knowing my higher, unchanging, unsurpassed nature.</em> The point isn't decoration. It's a working description of what akṣarātīta actually feels like from inside a practice: not a special vocabulary, but direct contact with something that was never waiting on a vocabulary to exist.</p>
+  <p class="body-text">There's a plain, almost technical way to say the same thing. A human mind currently gets "programmed" the way a language model does — trained, overwhelmingly, on words: what parents say, what school repeats, what a culture rewards and punishes in language. That training works, but it's indirect — everything has to pass through the symbol first, get decoded, then be acted on. A seed doesn't work that way. A desert plant isn't trained on how to survive drought through some curriculum; the instruction is written directly into what it is, expressed the moment conditions call for it, with no teacher and no delay. Every species in nature carries its intelligence this way — as inherent nature, <em>prakṛti</em>, rather than as an installed program that has to be consciously recalled before it can be used.</p>
+  <p class="body-text">The long-term, and maybe most undervalued, project available to human civilisation is closing that gap — processing saṃskāras so thoroughly that they stop needing to be remembered as rules and simply become <em>svabhāva</em>, a person's own inherent nature: someone who doesn't need to be told what's kind, honest, or wise in the moment, because it's no longer mediated by instruction at all. That's a slower, quieter kind of achievement than a rocket leaving the atmosphere — but arguably the deeper one. A civilisation that can launch itself into space while still needing to be told, sentence by sentence, how not to harm itself, hasn't yet solved its most basic engineering problem. It's the one this page keeps circling back to.</p>
+</section>
+
+<div class="spine wrap">
+
+  <!-- DHARMIC -->
+  <section class="family" data-fam="dharmic">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10,17 C80,-4 100,38 150,17 C200,-4 220,38 290,17" stroke="var(--dharmic)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">Dharmic Traditions</h2>
+      <p class="family-note">Hindu, Buddhist, and Jain thought — where liberation means unwinding the self from a cycle, not being rescued from an external verdict.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Moksha</span>
+          <span class="term-script">मोक्ष</span>
+        </div>
+        <p class="term-literal">"release" — from mokṣ, to let go</p>
+        <p class="term-essence">The Hindu culmination: the individual self (jīva) recognises its identity with the absolute (Brahman) and the wheel of birth and rebirth simply stops turning. Not an event granted from outside, but a recognition that dissolves the question of separateness altogether.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">an ocean realising it was never a wave</span></div>
+          <div><span class="label">path</span><span class="value">jñāna (knowledge), bhakti (devotion), karma (action), or rāja yoga — the four traditional roads</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Mukti</span>
+          <span class="term-script">मुक्ति</span>
+        </div>
+        <p class="term-literal">"freedom" — the everyday cousin of moksha</p>
+        <p class="term-essence">Where moksha is the final, irreversible liberation, mukti is the broader word — it can describe freedom from a particular bondage, a mental knot, even a worldly hardship, and it can be tasted here and now as jīvanmukti, "liberation while still living."</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a held breath, finally let out</span></div>
+          <div><span class="label">path</span><span class="value">any sincere loosening of attachment — often the word used for liberation-in-progress</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Nirvana</span>
+          <span class="term-script">निर्वाण</span>
+        </div>
+        <p class="term-literal">"blowing out" — as a flame is extinguished</p>
+        <p class="term-essence">The Buddhist end of the path: not the extinguishing of the self into nothingness, but the extinguishing of the three fires — craving, aversion, and delusion — that make a self feel like something that must be defended. What remains when the fires go out is not described as annihilation, but as the only real peace.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the stillness after a candle stops flickering</span></div>
+          <div><span class="label">path</span><span class="value">the Noble Eightfold Path — right view through right concentration</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Kaivalya</span>
+          <span class="term-script">कैवल्य</span>
+        </div>
+        <p class="term-literal">"aloneness" — from kevala, singular, unmixed</p>
+        <p class="term-essence">The goal of classical Yoga and of Jainism: pure consciousness (puruṣa) recognises it was never entangled with matter and change (prakṛti) at all. Where moksha often implies merging into a larger whole, kaivalya is closer to a clean separation — the witness standing free of everything it was witnessing.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a mirror that stops mistaking reflections for itself</span></div>
+          <div><span class="label">path</span><span class="value">Jain: ahiṃsā and ascetic discipline · Yoga: the eight limbs of Patañjali</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Samadhi</span>
+          <span class="term-script">समाधि</span>
+        </div>
+        <p class="term-literal">"placing together" — total absorption</p>
+        <p class="term-essence">Less a final destination than the doorway to one: a state in which the meditator, the act of meditating, and the object meditated upon stop feeling like three separate things. In yoga it is the last of the eight limbs, and often the direct antechamber to kaivalya or moksha.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the moment a dancer disappears into the dance</span></div>
+          <div><span class="label">path</span><span class="value">sustained dhyāna (meditative absorption) built on a still, focused mind</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Atma-sakshatkar</span>
+          <span class="term-script">आत्मसाक्षात्कार</span>
+        </div>
+        <p class="term-literal">"direct witnessing of the self"</p>
+        <p class="term-essence">Self-realisation: the felt, not merely intellectual, knowledge that "I am not this body or this story, but pure awareness." Regarded as the first real step of the path rather than its end — once this is seen clearly, moksha is said to follow naturally.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">turning around to find you were the seer, not the seen</span></div>
+          <div><span class="label">path</span><span class="value">self-inquiry (ātma-vichāra), often through the question "who am I?"</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABRAHAMIC -->
+  <section class="family" data-fam="abrahamic">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20,25 L140,8 L160,26 L280,9" stroke="var(--abrahamic)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">Abrahamic Traditions</h2>
+      <p class="family-note">Christianity, Islam, and Judaism — where freedom is more often framed as relationship: a rift with the divine that is healed, closed, or dissolved.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Salvation</span>
+          <span class="term-script">σωτηρία</span>
+        </div>
+        <p class="term-literal">from Latin salvare, "to save"</p>
+        <p class="term-essence">The Christian deliverance from sin and its consequence, offered through grace rather than earned through effort alone. Its emphasis sits less on the self dissolving and more on a relationship being restored — the soul brought back into right standing with God.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a hand reaching down before you finish falling</span></div>
+          <div><span class="label">path</span><span class="value">faith and grace, commonly understood as received rather than achieved</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Redemption</span>
+          <span class="term-script">גְּאֻלָּה / lutron</span>
+        </div>
+        <p class="term-literal">"buying back" — a debt or captive released at a price</p>
+        <p class="term-essence">Where salvation names the rescue, redemption names the transaction underneath it — something owed is paid, something lost is bought back. In personal terms it is the sense that a past wrong need not be a permanent verdict on who you are.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a ransom quietly paid on your behalf</span></div>
+          <div><span class="label">path</span><span class="value">repentance, atonement, and — in Christian theology — the cross</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Fana</span>
+          <span class="term-script">فناء</span>
+        </div>
+        <p class="term-literal">"annihilation" — passing away of the self</p>
+        <p class="term-essence">The Sufi mystical peak: the ego-self (nafs) is annihilated in the overwhelming reality of God, so that nothing of the separate "I" remains to get in the way. Fana is traditionally followed by baqā — "subsistence" — the self returning, but now transparent, living from God rather than for itself.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a drop that stops insisting it is not the ocean</span></div>
+          <div><span class="label">path</span><span class="value">dhikr (remembrance/chanting of God's names) under a guide (murshid)</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Devekut</span>
+          <span class="term-script">דבקות</span>
+        </div>
+        <p class="term-literal">"clinging" or "cleaving" — to God</p>
+        <p class="term-essence">The Jewish mystical (especially Hasidic) ideal of continuous, felt closeness to the divine in the midst of ordinary life — less a final release from the world than a way of being saturated by God's presence while still fully in it. Often held alongside tikkun olam, the ongoing work of "repairing the world."</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a hand that never quite lets go of another hand</span></div>
+          <div><span class="label">path</span><span class="value">prayer, study, and joyful mindfulness (kavanah) woven into daily acts</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Liberation</span>
+          <span class="term-script">—</span>
+        </div>
+        <p class="term-literal">the general English word for being set free</p>
+        <p class="term-essence">Deliberately the loosest term here — used across faiths, and just as often outside them, for freedom from political, social, or psychological bondage as much as spiritual. In Indian-English religious writing it usually stands in directly for mukti or moksha.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a door that was locked, now standing open</span></div>
+          <div><span class="label">path</span><span class="value">context-dependent — spiritual practice, social struggle, or inner work</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EAST ASIAN -->
+  <section class="family" data-fam="eastasian">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10,17 Q75,0 150,17 T290,17" stroke="var(--eastasian)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">East Asian Traditions</h2>
+      <p class="family-note">Taoism and Zen Buddhism — where the "freedom" is often less a place arrived at than a friction removed from ordinary living.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Wu Wei</span>
+          <span class="term-script">無為</span>
+        </div>
+        <p class="term-literal">"non-doing" — effortless action</p>
+        <p class="term-essence">The Taoist ideal: acting in such complete alignment with the natural flow of things (the Tao) that action stops feeling like exertion against the world. Not passivity, but the absence of the strain that comes from forcing outcomes — water finding its way downhill without trying.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a river that never has to decide where to go</span></div>
+          <div><span class="label">path</span><span class="value">simplicity (pu), yielding, and living in accord with the Tao Te Ching's rhythm</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Satori / Kenshō</span>
+          <span class="term-script">悟り / 見性</span>
+        </div>
+        <p class="term-literal">"awakening" / "seeing one's true nature"</p>
+        <p class="term-essence">The Zen flash of insight — kenshō a first, often brief glimpse of one's own nature, satori a deeper, more settled version of the same seeing. Zen is wary of treating this as a permanent finish line; it is usually described as something to be deepened through ordinary practice long after the first glimpse.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the sudden clarity after fog lifts, mid-step</span></div>
+          <div><span class="label">path</span><span class="value">zazen (seated meditation), koan practice, and a teacher's direct guidance</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- HELLENIC -->
+  <section class="family" data-fam="hellenic">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15,20 L100,20 L115,8 L130,20 L290,20" stroke="var(--hellenic)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">Hellenic &amp; Philosophical</h2>
+      <p class="family-note">Greek schools that framed the "good life" without an afterlife guarantee — freedom as a state of mind achieved through how one thinks, not what one believes.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Ataraxia</span>
+          <span class="term-script">ἀταραξία</span>
+        </div>
+        <p class="term-literal">"un-disturbedness"</p>
+        <p class="term-essence">The Stoic and Epicurean picture of freedom: a mind no longer thrown around by fear, desire, or the opinions of others. For the Stoics it comes from accepting what is not in one's control; for the Epicureans, from paring desire down to what is easily satisfied.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a lake with no wind left to ripple it</span></div>
+          <div><span class="label">path</span><span class="value">Stoic: the dichotomy of control · Epicurean: simple pleasures, examined desire</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Eudaimonia</span>
+          <span class="term-script">εὐδαιμονία</span>
+        </div>
+        <p class="term-literal">"good spirit" — often rendered "flourishing"</p>
+        <p class="term-essence">Aristotle's answer to what a human life is for: not a fleeting happy feeling, but a life well-lived through the steady exercise of virtue and reason across a lifetime. Freedom here is less an escape from the world than the fullest, most functional way of being in it.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">an oak growing exactly as an oak should</span></div>
+          <div><span class="label">path</span><span class="value">the cultivation of virtue (aretē) through habituated practical wisdom</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="section-intro">
+    <p class="kicker">and beyond the final word —</p>
+    <p>Liberation is not only a destination. Many traditions also named the felt qualities of living close to it: the heart's daily disciplines, the inner posture of the free, and the simplest liberated act of all — noticing a gift, and saying so.</p>
+  </div>
+
+  <!-- FOUR IMMEASURABLES -->
+  <section class="family" data-fam="immeasurables">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10,17 C60,2 60,32 110,17 C160,2 160,32 210,17 C240,2 260,32 290,17" stroke="var(--heart)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">The Four Immeasurables</h2>
+      <p class="family-note">Buddhism's brahmavihāras — not endpoints but daily disciplines, cultivated moment to moment as the felt texture of a mind moving toward freedom.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Metta</span>
+          <span class="term-script">मेत्ता / मैत्री</span>
+        </div>
+        <p class="term-literal">"loving-kindness" — from mitra, friend</p>
+        <p class="term-essence">Unconditional goodwill, extended first to oneself, then to loved ones, to neutral people, to those who are difficult, and finally to all beings — a wish for well-being that asks nothing back and checks no one's worthiness first.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">warmth that doesn't check who deserves it</span></div>
+          <div><span class="label">path</span><span class="value">metta bhāvanā — silently repeating phrases of goodwill, widening the circle stage by stage</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Karuna</span>
+          <span class="term-script">करुणा</span>
+        </div>
+        <p class="term-literal">"compassion" — a tender response to suffering</p>
+        <p class="term-essence">The trembling of the heart at another's pain, paired with the active wish — and willingness — to ease it. Not pity observed from a safe distance, but a felt kinship in the fact that all beings suffer.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a hand that reaches out before it decides to</span></div>
+          <div><span class="label">path</span><span class="value">tonglen — breathing in another's pain, breathing out relief and space</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Mudita</span>
+          <span class="term-script">मुदिता</span>
+        </div>
+        <p class="term-literal">"sympathetic joy" — gladness, delight</p>
+        <p class="term-essence">The deliberately trained ability to feel genuine joy at someone else's good fortune — with no comparison running underneath it, no sense of being diminished by another's rise. Considered the direct antidote to envy.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">clapping without checking your own scoreboard</span></div>
+          <div><span class="label">path</span><span class="value">consciously celebrating others' wins, especially where envy would normally rise first</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Upekkha</span>
+          <span class="term-script">उपेक्षा</span>
+        </div>
+        <p class="term-literal">"equanimity" — to look upon without leaning in</p>
+        <p class="term-essence">The steadiness that holds metta, karuna, and mudita without tipping into favoritism, burnout, or cold indifference — the ballast that keeps an open heart sustainable rather than depleting.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a lake wide enough that no single wave defines it</span></div>
+          <div><span class="label">path</span><span class="value">watching pleasant and unpleasant experience arise and pass without gripping or pushing</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- WITNESS AND GRACE -->
+  <section class="family" data-fam="witness">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M20,20 L120,20 M150,8 L150,32 M180,20 L280,20" stroke="var(--witness)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">The Witness &amp; The Grace</h2>
+      <p class="family-note">Sanskrit words for the inner posture of a life lived close to liberation — how it feels to stand near freedom, not just what it's called on arrival.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Sakshi</span>
+          <span class="term-script">साक्षी</span>
+        </div>
+        <p class="term-literal">"witness" — sa (with) + akṣa (eye)</p>
+        <p class="term-essence">The vantage point of pure awareness that observes thoughts, emotions, and events passing through the mind without being stained or altered by them. You are not the storm — you are the sky it happens in.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a screen unbothered by whatever film is playing on it</span></div>
+          <div><span class="label">path</span><span class="value">sākṣī bhāva — stepping back from a reaction to simply notice "this is being witnessed"</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Kripa</span>
+          <span class="term-script">कृपा</span>
+        </div>
+        <p class="term-literal">"grace" — tenderness, favorable regard</p>
+        <p class="term-essence">The sense that liberation isn't always earned by effort alone — it can also arrive as an unearned gift, from a guru, a deity, or existence itself, met by a heart soft enough to receive rather than strive.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">sunlight falling on a field that did nothing to summon it</span></div>
+          <div><span class="label">path</span><span class="value">prapatti — surrender that stops insisting the self must do all the work</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Kshama</span>
+          <span class="term-script">क्षमा</span>
+        </div>
+        <p class="term-literal">"forgiveness" — forbearance, patience</p>
+        <p class="term-essence">One of the classical restraints (yamas): releasing the grip of a wrong done to you — not because it didn't matter, but because carrying it corrodes the one who holds it more than the one who caused it.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a fist that finally remembers it can open</span></div>
+          <div><span class="label">path</span><span class="value">naming the hurt plainly, then setting its weight down as an act of self-liberation</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- GRATITUDE ACROSS TONGUES -->
+  <section class="family" data-fam="thanks">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M15,10 L15,24 M60,10 L60,24 M105,10 L105,24 M150,6 L150,28 M195,10 L195,24 M240,10 L240,24 M285,10 L285,24" stroke="var(--thanks)" stroke-width="1" fill="none" opacity="0.5"/>
+      </svg>
+      <h2 class="family-name">Giving Thanks, Across Tongues</h2>
+      <p class="family-note">Different languages, all built around one of the simplest liberated acts there is — noticing a gift, and saying so.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Prasada</span>
+          <span class="term-script">प्रसाद</span>
+        </div>
+        <p class="term-literal">"grace, clarity" — pra (thoroughly) + sad (to settle)</p>
+        <p class="term-essence">Originally a word for a mind made calm and clear. In devotional practice it names the blessed offering returned by a deity — grace made tangible enough to hold in your hands, and to eat.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a gift that was already on its way before you asked</span></div>
+          <div><span class="label">path</span><span class="value">pūjā — offering first, and receiving what returns as grace rather than entitlement</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Shukr</span>
+          <span class="term-script">شكر</span>
+        </div>
+        <p class="term-literal">"gratitude" — literally, to unveil, to expose</p>
+        <p class="term-essence">Noticing a blessing and openly acknowledging its source. Its opposite, kufr, means to cover up or bury a blessing in ingratitude — here, gratitude is close to an act of plain honesty.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">pulling back a curtain to let a gift be seen</span></div>
+          <div><span class="label">path</span><span class="value">deliberately counting and naming blessings aloud, especially during hardship</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Todah / Eucharistia</span>
+          <span class="term-script">תּוֹדָה / εὐχαριστία</span>
+        </div>
+        <p class="term-literal">todah, "praise, thanks" · eucharistia, "good response to grace"</p>
+        <p class="term-essence">Gratitude as an offering made in return for a gift already given — in Hebrew tradition historically an actual sacrifice at the temple, and in Greek the very root of the word Eucharist.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">an open hand raised back toward the one that opened first</span></div>
+          <div><span class="label">path</span><span class="value">ritual blessing said before receiving, not only after</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- POWER BENEATH LANGUAGE -->
+  <section class="family" data-fam="word">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10,17 Q40,4 70,17 Q100,30 130,17 Q160,4 190,17 Q220,30 250,17 Q265,10 290,17" stroke="var(--sound)" stroke-width="1" fill="none" opacity="0.55"/>
+      </svg>
+      <h2 class="family-name">The Power Beneath Language</h2>
+      <p class="family-note">Before there is a doctrine, there is a sound. Words for the raw material every tradition on this page was built from — speech, repetition, and meaning itself.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Mantra</span>
+          <span class="term-script">मन्त्र</span>
+        </div>
+        <p class="term-literal">man (mind) + tra (instrument, that which carries across)</p>
+        <p class="term-essence">Not simply a sacred phrase, but a sound-structure engineered to be repeated until it reshapes the one repeating it — literally "a tool for the mind," built the way any tool is built: for use, not for admiration.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a groove worn into stone by the same drop of water, returning</span></div>
+          <div><span class="label">path</span><span class="value">japa — repeating a chosen sound with full attention until the sound begins repeating itself</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Japa</span>
+          <span class="term-script">जप</span>
+        </div>
+        <p class="term-literal">"to utter in a low voice; to repeat"</p>
+        <p class="term-essence">The practice, not the phrase — repetition itself treated as a discipline. What is repeated matters less here than the fact of returning to it, count after count, the way a hand returns to a familiar tool without needing to look.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a bead moving under the thumb, again, again, again</span></div>
+          <div><span class="label">path</span><span class="value">counted repetition on a mala of 108 beads, until the counting itself falls away</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Vak</span>
+          <span class="term-script">वाक्</span>
+        </div>
+        <p class="term-literal">"speech, the Word" — personified in the Vedas as a goddess</p>
+        <p class="term-essence">The idea that speech is not a report on reality but a force that helps constitute it — the Rigveda's Vāk Sūkta has the goddess of speech declare that she moves even the gods. To speak, in this view, is never a neutral act.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a name that doesn't describe a thing, but calls it into the room</span></div>
+          <div><span class="label">path</span><span class="value">satya — truthful, deliberate speech held as a discipline, not just a preference</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Nada</span>
+          <span class="term-script">नाद</span>
+        </div>
+        <p class="term-literal">"sound" — especially the subtle, unstruck sound said to underlie all struck ones</p>
+        <p class="term-essence">The idea, echoed in the Greek "music of the spheres," that reality is fundamentally vibration before it is anything else — that listening closely enough, past every spoken word, reaches a hum that never needed language to begin with.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the silence a bell leaves behind, which was somehow already there</span></div>
+          <div><span class="label">path</span><span class="value">nada yoga — meditating through subtler and subtler layers of sound, down to the tone beneath thought</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Artha</span>
+          <span class="term-script">अर्थ</span>
+        </div>
+        <p class="term-literal">"meaning, purpose, sense" — also "wealth" or "resource"</p>
+        <p class="term-essence">One of the four classical aims of a life (puruṣārthas), sitting between dharma (duty) and kāma (desire). That one word covers both "meaning" and "wealth" carries an old, practical wisdom: what you're actually rich in is whatever your life has meant.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a coin that only spends in the currency of significance</span></div>
+          <div><span class="label">path</span><span class="value">examining what today's effort is actually purchasing — comfort, or meaning</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Logos</span>
+          <span class="term-script">λόγος</span>
+        </div>
+        <p class="term-literal">"word, reason, account, the principle of order"</p>
+        <p class="term-essence">In Greek philosophy, the rational structure underlying the cosmos, later carried into Christian theology as "In the beginning was the Word." Where Vāk treats speech as a creative force, Logos treats it as the order that makes a universe intelligible at all — reason and language as one root capacity.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the grammar the universe already seems to be written in</span></div>
+          <div><span class="label">path</span><span class="value">Stoic practice — aligning one's own reason with the logos understood to govern nature</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BEYOND THE SYLLABLE -->
+  <section class="family" data-fam="beyond">
+    <div class="family-head">
+      <svg class="family-divider" viewBox="0 0 300 34" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M10,17 L100,17 M120,6 L120,28 M140,17 L200,17 M220,6 L220,28 M240,17 L290,17" stroke="var(--beyond)" stroke-width="1" fill="none" opacity="0.5"/>
+      </svg>
+      <h2 class="family-name">Beyond the Syllable</h2>
+      <p class="family-note">Where the dictionary starts pointing past itself — words for what a word can only gesture toward, and for a nature so thoroughly refined it no longer needs the gesture at all.</p>
+    </div>
+
+    <div class="terms">
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Akshara</span>
+          <span class="term-script">अक्षर</span>
+        </div>
+        <p class="term-literal">"imperishable, that which does not decay" — also "syllable" or "letter"</p>
+        <p class="term-essence">The stable sound-seed understood to sit beneath a changing world — in the Gītā's language, the unmoving witness (kūṭastha) beneath every perishable thing. A letter is called akṣara because, unlike the breath that carries it, its form doesn't perish with the saying.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the note that stays the same however many times the string is struck</span></div>
+          <div><span class="label">path</span><span class="value">repeated, attentive utterance — see mantra, japa — until the sound stops feeling arbitrary</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Akṣarātīta</span>
+          <span class="term-script">अक्षरातीत</span>
+        </div>
+        <p class="term-literal">akṣara (imperishable) + atīta (gone beyond)</p>
+        <p class="term-essence">A state higher even than the unchanging witness. The Gītā names this Puruṣottama — beyond both the perishable (kṣara) and the imperishable (akṣara) alike: not a fourth letter in a longer alphabet, but the point past which nothing needs a letter at all.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the silence a word points to, never quite arriving inside the word itself</span></div>
+          <div><span class="label">path</span><span class="value">meditation carried past its own technique, until even the method is set down</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Avyakta</span>
+          <span class="term-script">अव्यक्त</span>
+        </div>
+        <p class="term-literal">"unmanifest, unexpressed"</p>
+        <p class="term-essence">What exists before it takes any particular shape — the formless ground a thought, a word, or a world rises out of, still whole, still undecided.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the pause before an instrument is struck, already full of the note</span></div>
+          <div><span class="label">path</span><span class="value">sitting with what hasn't become anything yet, without rushing it into form</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Vyakta</span>
+          <span class="term-script">व्यक्त</span>
+        </div>
+        <p class="term-literal">"manifest, made clear, expressed"</p>
+        <p class="term-essence">The same reality, now given shape — a word spoken, a form taken, a feeling finally said aloud. The Gītā warns that mistaking the manifest for the whole story is exactly where understanding stalls: what's expressed is real, but it was never the only thing that was real.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">the note itself, now audible, already halfway back to silence</span></div>
+          <div><span class="label">path</span><span class="value">honouring what's expressed without forgetting the unmanifest it came from</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Prakṛti</span>
+          <span class="term-script">प्रकृति</span>
+        </div>
+        <p class="term-literal">"that which is made first" — original nature</p>
+        <p class="term-essence">Nature acting from its own built-in intelligence, with no instructor and no delay — a desert plant conserving water, a seed becoming a tree, neither one consulting a manual. Everything in the natural world runs this way: not a program consciously recalled, but a way of being that was simply always already the case.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">water finding the lowest point, without being told which way is down</span></div>
+          <div><span class="label">path</span><span class="value">not quite a practice — closer to what remains once every acquired instruction stops feeling separate from you</span></div>
+        </div>
+      </div>
+
+      <div class="term">
+        <div class="term-top">
+          <span class="term-name">Svabhāva</span>
+          <span class="term-script">स्वभाव</span>
+        </div>
+        <p class="term-literal">sva (one's own) + bhāva (being, nature)</p>
+        <p class="term-essence">The long civilisational target hiding behind every saṃskāra in this dictionary: a quality so thoroughly processed it stops being a rule you remember and simply becomes what you are — kindness, honesty, or clarity arriving the way instinct does, needing no instruction in the moment it's needed.</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">a habit so old it forgot it was ever learned</span></div>
+          <div><span class="label">path</span><span class="value">every practice on this page, followed long enough that the practice disappears into the practitioner</span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<section class="compare wrap">
+  <h2>At a glance</h2>
+  <div class="table-scroll">
+    <table>
+      <thead>
+        <tr>
+          <th>Term</th>
+          <th>Tradition</th>
+          <th>What is being freed</th>
+          <th>When it's reached</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Moksha</td><td>Hindu</td><td>The self, from rebirth — merges with the absolute</td><td>After death, or while living (jīvanmukti)</td></tr>
+        <tr><td>Mukti</td><td>Hindu (general)</td><td>Any bondage, worldly or spiritual</td><td>Temporary or permanent</td></tr>
+        <tr><td>Nirvana</td><td>Buddhist</td><td>Craving, aversion, delusion</td><td>Attainable while living</td></tr>
+        <tr><td>Kaivalya</td><td>Jain / Yoga</td><td>Consciousness, from matter</td><td>A state of pure, isolated awareness</td></tr>
+        <tr><td>Samadhi</td><td>Yogic</td><td>The sense of a separate observer</td><td>A doorway-state, within practice</td></tr>
+        <tr><td>Salvation</td><td>Christian</td><td>The soul, from sin's consequence</td><td>Through grace and faith</td></tr>
+        <tr><td>Redemption</td><td>Abrahamic</td><td>A debt or past wrong</td><td>Through atonement or sacrifice</td></tr>
+        <tr><td>Fana</td><td>Sufi</td><td>The ego-self, in God</td><td>A mystical peak, followed by baqā</td></tr>
+        <tr><td>Devekut</td><td>Jewish mysticism</td><td>The sense of distance from God</td><td>Cultivated moment to moment</td></tr>
+        <tr><td>Wu Wei</td><td>Taoist</td><td>Strain against the natural order</td><td>A way of acting, not a final state</td></tr>
+        <tr><td>Satori</td><td>Zen</td><td>Illusion about one's own nature</td><td>Sudden, then deepened over time</td></tr>
+        <tr><td>Ataraxia</td><td>Stoic / Epicurean</td><td>Disturbance by fear and desire</td><td>A trained, sustainable mental state</td></tr>
+        <tr><td>Eudaimonia</td><td>Aristotelian</td><td>A life poorly lived</td><td>Across a whole life, through virtue</td></tr>
+        <tr><td>Metta</td><td>Buddhist</td><td>Conditional, selective goodwill</td><td>A practice, widened circle by circle</td></tr>
+        <tr><td>Karuna</td><td>Buddhist</td><td>Distance from others' suffering</td><td>Arises on contact, deepens with practice</td></tr>
+        <tr><td>Mudita</td><td>Buddhist</td><td>Envy at others' good fortune</td><td>Trained response, moment to moment</td></tr>
+        <tr><td>Upekkha</td><td>Buddhist</td><td>Being swept by praise, blame, gain, loss</td><td>A steadiness built over time</td></tr>
+        <tr><td>Sakshi</td><td>Hindu / Yogic</td><td>Identification with thought and reaction</td><td>Recognised in any present moment</td></tr>
+        <tr><td>Kripa</td><td>Hindu</td><td>The illusion that effort alone must free you</td><td>Received, not scheduled</td></tr>
+        <tr><td>Kshama</td><td>Hindu</td><td>The grip of a remembered wrong</td><td>Chosen, often repeatedly</td></tr>
+        <tr><td>Prasada</td><td>Hindu</td><td>A mind unsettled, ungrateful</td><td>Given and received in ritual exchange</td></tr>
+        <tr><td>Shukr</td><td>Islamic</td><td>A blessing left unnoticed</td><td>Practised daily, especially in hardship</td></tr>
+        <tr><td>Todah / Eucharistia</td><td>Jewish / Christian</td><td>A gift received without response</td><td>Offered before and after receiving</td></tr>
+        <tr><td>Mantra</td><td>Vedic / Yogic</td><td>Scattered, undirected attention</td><td>Repeated until it becomes automatic</td></tr>
+        <tr><td>Japa</td><td>Yogic</td><td>Restlessness — met inside the practice itself</td><td>Built count by count, bead by bead</td></tr>
+        <tr><td>Vak</td><td>Vedic</td><td>Careless or thoughtless speech</td><td>Practised as ongoing discipline</td></tr>
+        <tr><td>Nada</td><td>Yogic / Tantric</td><td>Noise mistaken for the deepest layer</td><td>Heard in meditation, layer by layer</td></tr>
+        <tr><td>Artha</td><td>Hindu (puruṣārthas)</td><td>A life spent on resources with no meaning</td><td>An ongoing, daily question</td></tr>
+        <tr><td>Logos</td><td>Hellenic / Christian</td><td>Disorder, unintelligibility</td><td>Reached by aligning reason with cosmic order</td></tr>
+        <tr><td>Akshara</td><td>Vedic / Vedantic</td><td>Mistaking a sound for its source</td><td>Reached through repeated, attentive utterance</td></tr>
+        <tr><td>Akṣarātīta</td><td>Vedantic (Gītā)</td><td>Identification with even the unchanging witness</td><td>A meditative state beyond technique</td></tr>
+        <tr><td>Avyakta</td><td>Vedantic</td><td>Rushing the formless into form too soon</td><td>Approached by sitting with what hasn't shaped yet</td></tr>
+        <tr><td>Vyakta</td><td>Vedantic</td><td>Mistaking the expressed for the whole</td><td>Honoured without forgetting its unmanifest source</td></tr>
+        <tr><td>Prakṛti</td><td>Universal / natural</td><td>Intelligence that must be consciously recalled</td><td>Intelligence built directly into being</td></tr>
+        <tr><td>Svabhāva</td><td>Vedantic / universal</td><td>A virtue that still needs reminding</td><td>A virtue that has become instinct</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="reflection wrap">
+  <p class="mantra-kicker">a closing note</p>
+  <h2 class="mantra-title">Why Any of This Exists At All</h2>
+  <p class="body-text">Every language gathered on this page, whatever else it was built for, also seems to have been built as medicine. A word gives shape to something that would otherwise just sit in the body as pressure — undigested fear, grief with nowhere to go, joy with no one to tell. Naming a feeling doesn't make it disappear, but it does something almost as useful: it makes the feeling shareable, which means it no longer has to be carried alone.</p>
+  <p class="body-text">There's a small resonance worth sitting with in the word <em>earth</em> itself. Remove the E, and what's left — <em>arth</em> — sits close to the Sanskrit अर्थ (<em>artha</em>): meaning, purpose, and, in the classical list of life's aims, wealth as well. It may be coincidence. It's still worth the pause: this may be the one place, as far as we currently know, where meaning happens at all — where matter organised itself into beings capable of asking what something means, and then built entire languages just to answer each other.</p>
+  <p class="body-text">No other species that we know of has built a dictionary. None has needed one: a word only becomes necessary once experience gets complicated enough that pointing isn't enough anymore — once a being needs to hand its inner weather to another being, across time, across distance, across generations who will never meet. Every tradition gathered on this page, however different its cosmology, however different its god or its absence of one, appears to have been doing exactly that: turning suffering, longing, and stillness into syllables precise enough to be recognised, carried, and eventually, healed.</p>
+  <p class="body-text">This page, then, was never really about which word is correct. It's a small collection of evidence that an enormous number of unrelated humans, in unrelated corners of the earth, independently built the same kind of tool — because every one of them needed somewhere to put what they felt, and a way to hand it to whoever came next.</p>
+</section>
+
+<section class="reflection wrap">
+  <p class="mantra-kicker">closing wider than language</p>
+  <h2 class="mantra-title">One Earth, Every Contribution</h2>
+  <p class="body-text">Thousands of languages have lived on this earth, spoken by thousands of cultures — not as thousands of attempts to say one single thing, but as thousands of different angles on how to make a life more livable. Where one culture reached for nirvana, another reached for ubuntu, another for ikigai, another for hygge, another for sisu — each word a slightly different door into the same house, each one widening what it becomes possible for a human mind to feel, name, and grow into. That, more than any single answer, may be what freedom has always actually been: not one liberated state everyone converges on, but a widening spectrum — more ways to be, more ways to heal, more ways to belong — kept alive precisely because no two languages, and no two people, made quite the same one.</p>
+  <p class="body-text">That same widening isn't unique to humans, or to language. Every being on this earth — a bacterium breaking down what nothing else can digest, an insect pollinating what no other species pollinates quite that way, a plant fixing nitrogen an entire soil depends on, an animal scattering seeds it never meant to plant — is contributing something the rest of the system cannot produce on its own. An ecosystem doesn't ask any one species to carry the whole of life; it spreads that work across a spectrum of beings wide enough that losing almost any single thread of it is felt everywhere else.</p>
+  <p class="body-text">And every one of those beings dies. That part is certain — for a bacterium, an insect, a language, a person. But an ecosystem doesn't treat death as a simple subtraction: a fallen tree feeds the fungus that feeds the soil that feeds the next tree; a life fully lived leaves behind habits, words, children, compost, memory, and culture that keep circulating long after the life itself has stopped. Nothing here is wasted, only passed on. Death, seen this way, isn't the opposite of contribution — it's often the final, largest act of it.</p>
+  <p class="body-text">Which leaves a fairly workable question for any single day: if every language that ever existed was built to widen what's livable, and every being that ever lived contributed something no other being quite could — what does today need from you, specifically? Not the whole spectrum, not everyone else's share — just the one thread only your life happens to be able to add. A day lived that way tends to be, in some small and literal sense, a better day on earth than the last one — not because the world became perfect, but because one more thread got added to a fabric that was always going to need every single one.</p>
+  <p class="body-text">Perhaps that's what freedom finally is: not a wall built to hold something back, but a dam finally freed — everything a life gathered, released downstream to nourish whatever comes after it. Free-dam. E, plus <em>arth</em> — meaning. One place, endlessly adding to itself.</p>
+</section>
+
+<section class="contribute wrap" id="community-wrap" style="display:none;">
+  <p class="mantra-kicker" style="text-align:center;">added by people reading this page</p>
+  <h2 class="mantra-title" style="text-align:center;">Community Words</h2>
+  <p class="contribute-note">Anyone who can open this page can add a word below, and anyone can edit any entry here directly — click "Edit," change it, save. There's no version history: the latest save is simply what stays.</p>
+  <div class="terms" id="community-list"></div>
+  <p class="community-empty" id="community-empty">No community words yet — be the first to add one below.</p>
+</section>
+
+<section class="contribute wrap" id="contribute">
+  <p class="mantra-kicker" style="text-align:center;">this dictionary isn't finished</p>
+  <h2 class="mantra-title" style="text-align:center;">Add a Word</h2>
+  <p class="contribute-note" id="contribute-note">There are thousands more words like these, in languages this page hasn't reached yet. If you know one — from your own language, culture, or practice — add it below.</p>
+
+  <div class="contribute-box">
+    <form id="word-form">
+      <div class="contribute-grid">
+        <div class="field">
+          <label for="w-term">Term *</label>
+          <input id="w-term" required placeholder="e.g. Ubuntu">
+        </div>
+        <div class="field">
+          <label for="w-script">Native script / language</label>
+          <input id="w-script" placeholder="e.g. isiZulu">
+        </div>
+        <div class="field">
+          <label for="w-literal">Literal meaning</label>
+          <input id="w-literal" placeholder="e.g. \"I am because we are\"">
+        </div>
+        <div class="field">
+          <label for="w-tradition">Tradition / family</label>
+          <input id="w-tradition" placeholder="e.g. Southern African philosophy">
+        </div>
+        <div class="field full">
+          <label for="w-essence">Essence *</label>
+          <textarea id="w-essence" required placeholder="A few sentences on what this word actually carries — what state, relationship, or shift it points to."></textarea>
+        </div>
+        <div class="field">
+          <label for="w-vibe">Vibrational essence</label>
+          <input id="w-vibe" placeholder="a short, felt, poetic line">
+        </div>
+        <div class="field">
+          <label for="w-path">Path / practice</label>
+          <input id="w-path" placeholder="how it's traditionally reached or lived">
+        </div>
+        <div class="field full">
+          <label for="w-name">Your name or handle (optional, for credit)</label>
+          <input id="w-name" placeholder="e.g. Anaya R.">
+        </div>
+      </div>
+
+      <div class="contribute-actions">
+        <button type="submit" class="btn">Prepare entry</button>
+        <button type="button" id="copy-btn" class="btn secondary" disabled>Copy</button>
+        <a id="issue-link" class="btn secondary" href="#" target="_blank" rel="noopener" style="display:none;">Open as GitHub issue</a>
+      </div>
+
+      <div class="contribute-output" id="output-wrap" style="display:none;">
+        <textarea id="w-output" readonly></textarea>
+        <p class="contribute-status" id="w-status"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="closing wrap">
+  <p>Different maps, drawn by people who all stood at the same edge and looked at what lay beyond wanting.</p>
+</footer>
+
+<script>
+  // ---- Maintainer setup (used only when this file is NOT running as a
+  // published Claude artifact — e.g. hosted plain on GitHub Pages) --------
+  // To let visitors submit new words straight to a GitHub issue there,
+  // set this to your repo as "owner/repo". Leave blank to only offer "Copy".
+  const GITHUB_REPO = ""; // e.g. "yourname/many-names-of-freedom"
+  // ------------------------------------------------------------------------
+
+  const val = id => document.getElementById(id).value.trim();
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+  function readFormFields() {
+    return {
+      term: val('w-term'),
+      script: val('w-script'),
+      literal: val('w-literal'),
+      tradition: val('w-tradition'),
+      essence: val('w-essence'),
+      vibe: val('w-vibe'),
+      path: val('w-path'),
+      name: val('w-name') || 'anonymous'
+    };
+  }
+
+  function toMarkdown(d) {
+    return [
+      `### ${d.term}`,
+      d.script ? `**Script / language:** ${d.script}` : null,
+      d.literal ? `**Literal meaning:** ${d.literal}` : null,
+      d.tradition ? `**Tradition / family:** ${d.tradition}` : null,
+      '',
+      `**Essence:** ${d.essence}`,
+      d.vibe ? `**Vibrational essence:** *${d.vibe}*` : null,
+      d.path ? `**Path / practice:** ${d.path}` : null,
+      '',
+      `Suggested by: ${d.name}`
+    ].filter(Boolean).join('\n');
+  }
+
+  function clearForm() {
+    ['w-term','w-script','w-literal','w-tradition','w-essence','w-vibe','w-path','w-name'].forEach(id => {
+      document.getElementById(id).value = '';
+    });
+  }
+
+  // ---------------- Static fallback (no db capability available) --------
+  function copyFallbackSubmit(e) {
+    e.preventDefault();
+    const d = readFormFields();
+    if (!d.term || !d.essence) return;
+    const lines = toMarkdown(d);
+
+    const outputWrap = document.getElementById('output-wrap');
+    const output = document.getElementById('w-output');
+    const status = document.getElementById('w-status');
+    const copyBtn = document.getElementById('copy-btn');
+    const issueLink = document.getElementById('issue-link');
+
+    output.value = lines;
+    outputWrap.style.display = 'block';
+    copyBtn.disabled = false;
+
+    if (GITHUB_REPO) {
+      const url = `https://github.com/${GITHUB_REPO}/issues/new?title=${encodeURIComponent('New word: ' + d.term)}&body=${encodeURIComponent(lines)}`;
+      issueLink.href = url;
+      issueLink.style.display = 'inline-block';
+      status.textContent = 'Entry ready — copy it, or open it as a GitHub issue (any GitHub account can do that; a repo collaborator can then add it directly).';
+    } else {
+      issueLink.style.display = 'none';
+      status.textContent = "Entry ready — copy it and send it to this page's maintainer, or paste it into a pull request.";
+    }
+  }
+
+  document.getElementById('copy-btn').addEventListener('click', async function () {
+    const output = document.getElementById('w-output');
+    const status = document.getElementById('w-status');
+    try {
+      await navigator.clipboard.writeText(output.value);
+      status.textContent = 'Copied to clipboard.';
+    } catch (err) {
+      output.select();
+      status.textContent = "Select-all done — copy manually with your device's copy command.";
+    }
+  });
+
+  // ---------------- Live mode (db capability available) ------------------
+  function renderCommunityCard(id, d, colorClass) {
+    const wrap = document.createElement('div');
+    wrap.className = 'term community-term';
+    wrap.dataset.id = id;
+    wrap.innerHTML = `
+      <div class="view-mode">
+        <div class="term-top">
+          <span class="term-name">${esc(d.term || '')}</span>
+          <span class="term-script">${esc(d.script || '')}</span>
+        </div>
+        <p class="term-literal">${esc(d.literal || '')}</p>
+        <p class="term-essence">${esc(d.essence || '')}</p>
+        <div class="term-meta">
+          <div><span class="label">vibrational essence</span><span class="value vibration">${esc(d.vibe || '')}</span></div>
+          <div><span class="label">path</span><span class="value">${esc(d.path || '')}</span></div>
+        </div>
+        <p class="term-literal" style="margin-top:12px;">added by ${esc(d.name || 'anonymous')}</p>
+        <div class="term-actions"><button type="button" class="term-edit-btn">Edit</button></div>
+      </div>
+    `;
+    wrap.querySelector('.term-edit-btn').addEventListener('click', () => showEditForm(wrap, id, d));
+    return wrap;
+  }
+
+  function showEditForm(wrap, id, d) {
+    const form = document.createElement('div');
+    form.className = 'edit-form';
+    form.innerHTML = `
+      <div class="field"><label>Term</label><input class="e-term" value="${esc(d.term || '')}"></div>
+      <div class="field"><label>Script / language</label><input class="e-script" value="${esc(d.script || '')}"></div>
+      <div class="field"><label>Literal meaning</label><input class="e-literal" value="${esc(d.literal || '')}"></div>
+      <div class="field"><label>Tradition / family</label><input class="e-tradition" value="${esc(d.tradition || '')}"></div>
+      <div class="field"><label>Essence</label><textarea class="e-essence">${esc(d.essence || '')}</textarea></div>
+      <div class="field"><label>Vibrational essence</label><input class="e-vibe" value="${esc(d.vibe || '')}"></div>
+      <div class="field"><label>Path / practice</label><input class="e-path" value="${esc(d.path || '')}"></div>
+      <div class="field"><label>Credited to</label><input class="e-name" value="${esc(d.name || '')}"></div>
+      <div class="edit-form-actions">
+        <button type="button" class="btn e-save">Save</button>
+        <button type="button" class="btn secondary e-cancel">Cancel</button>
+      </div>
+      <p class="contribute-status e-status"></p>
+    `;
+    wrap.querySelector('.view-mode').style.display = 'none';
+    wrap.appendChild(form);
+
+    form.querySelector('.e-cancel').addEventListener('click', () => {
+      form.remove();
+      wrap.querySelector('.view-mode').style.display = '';
+    });
+
+    form.querySelector('.e-save').addEventListener('click', async () => {
+      const updated = {
+        term: form.querySelector('.e-term').value.trim(),
+        script: form.querySelector('.e-script').value.trim(),
+        literal: form.querySelector('.e-literal').value.trim(),
+        tradition: form.querySelector('.e-tradition').value.trim(),
+        essence: form.querySelector('.e-essence').value.trim(),
+        vibe: form.querySelector('.e-vibe').value.trim(),
+        path: form.querySelector('.e-path').value.trim(),
+        name: form.querySelector('.e-name').value.trim() || 'anonymous',
+        updatedAt: Date.now()
+      };
+      const status = form.querySelector('.e-status');
+      try {
+        await window.__wordsDb.doc('words/' + id).set(updated);
+        status.textContent = 'Saved.';
+      } catch (err) {
+        status.textContent = (err && err.code === 'invalid_argument')
+          ? "You don't have edit access on this page right now."
+          : 'Could not save — please try again.';
+      }
+    });
+  }
+
+  async function initLiveMode() {
+    let db;
+    try {
+      db = await claude.use('db');
+    } catch (err) {
+      db = null;
+    }
+    if (!db) return false; // not running inside a Claude artifact with db granted
+
+    window.__wordsDb = db;
+
+    const communityWrap = document.getElementById('community-wrap');
+    const list = document.getElementById('community-list');
+    const empty = document.getElementById('community-empty');
+    communityWrap.style.display = 'block';
+
+    db.collection('words').orderBy('addedAt', 'desc').limit(500).onSnapshot(
+      snap => {
+        list.innerHTML = '';
+        const docs = snap.docs || [];
+        empty.style.display = docs.length ? 'none' : 'block';
+        docs.forEach(doc => {
+          const d = doc.data ? doc.data() : doc;
+          const id = doc.id;
+          list.appendChild(renderCommunityCard(id, d));
+        });
+      },
+      err => { /* leave last known state on screen */ }
+    );
+
+    // Wire the "Add a Word" form to write straight into the shared store.
+    document.getElementById('contribute-note').textContent =
+      "There are thousands more words like these, in languages this page hasn't reached yet. Add one below — it appears above immediately, for everyone with access to this page.";
+    document.getElementById('copy-btn').style.display = 'none';
+
+    document.getElementById('word-form').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const d = readFormFields();
+      if (!d.term || !d.essence) return;
+      d.addedAt = Date.now();
+      const status = document.getElementById('w-status');
+      const outputWrap = document.getElementById('output-wrap');
+      try {
+        await db.collection('words').add(d);
+        clearForm();
+        outputWrap.style.display = 'block';
+        document.getElementById('w-output').style.display = 'none';
+        status.textContent = 'Added — it now appears above, for everyone.';
+      } catch (err) {
+        outputWrap.style.display = 'block';
+        document.getElementById('w-output').style.display = 'none';
+        status.textContent = (err && err.code === 'invalid_argument')
+          ? "You don't have write access to add words on this page right now."
+          : 'Could not add this word — please try again.';
+      }
+    });
+
+    return true;
+  }
+
+  initLiveMode().then(isLive => {
+    if (!isLive) {
+      // Static context (e.g. this file hosted plain on GitHub Pages): fall
+      // back to the offline copy / GitHub-issue submission flow.
+      document.getElementById('word-form').addEventListener('submit', copyFallbackSubmit);
+    }
+  });
+</script>
+
+</body>
+</html>
